@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Company Info{% endblock %}
+
+{% block content %}
+<h2>Company Info</h2>
+<a href="/create_company" class="button-link">+ Create New Company</a>
+
+<div class="search-box">
+    <input type="text" id="companySearch" placeholder="Search companies..." onkeyup="filterCards('companySearch', 'company-list')">
+</div>
+
+<div class="company-list">
+    {% for company in companies %}
+    <div class="company-card">
+        <div class="company-name">
+            <strong>{{ company["Ticker"] }}</strong> – {{ company["Company_Name"] }}<br>
+            <span style="color: #555;">Sector: {{ company["Industry"] }}</span>
+        </div>
+        <div class="actions">
+            <a href="/read_company/{{ company.key.name }}" class="btn btn-view">👁 View</a>
+            <a href="/update_company/{{ company.key.name }}" class="btn btn-edit">✏️ Edit</a>
+            <a href="/delete_company/{{ company.key.name }}" class="btn btn-delete" onclick="return confirmDelete()">🗑 Delete</a>
+        </div>
+    </div>
+    {% else %}
+    <p>No companies found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+

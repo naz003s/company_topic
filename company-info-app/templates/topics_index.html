@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Topic Info{% endblock %}
+
+{% block content %}
+<h2>Topic Info</h2>
+<a href="/create_topic" class="button-link">+ Create New Topic</a>
+
+<div class="search-box">
+    <input type="text" id="topicSearch" placeholder="Search topics..." onkeyup="filterCards('topicSearch', 'company-list')">
+</div>
+
+<div class="company-list">
+    {% for topic in topics %}
+    <div class="company-card">
+        <div class="company-name">
+            <strong>{{ topic["Keyword"] }}</strong><br>
+            <span style="color: #555;">
+                Classification: {{ topic["Classification"] }} | Sector: {{ topic["Sector"] }}<br>
+                Weight: {{ topic["Weight"] }}
+            </span>
+        </div>
+        <div class="actions">
+            <a href="/read_topic/{{ topic.key.id }}" class="btn btn-view">👁 View</a>
+            <a href="/update_topic/{{ topic.key.id }}" class="btn btn-edit">✏️ Edit</a>
+            <a href="/delete_topic/{{ topic.key.id }}" class="btn btn-delete" onclick="return confirmDelete()">🗑 Delete</a>
+        </div>
+    </div>
+    {% else %}
+    <p>No topics found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+

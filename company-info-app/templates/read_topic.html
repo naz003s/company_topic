@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Topic Details{% endblock %}
+
+{% block content %}
+<h2>Topic Details</h2>
+<p><strong>Keyword:</strong> {{ topic["Keyword"] }}</p>
+<p><strong>Classification:</strong> {{ topic["Classification"] }}</p>
+<p><strong>Sector:</strong> {{ topic["Sector"] }}</p>
+<p><strong>Weight:</strong> {{ topic["Weight"] }}</p>
+
+<div class="card-actions">
+    <a href="/topics" class="button-link">← Back to Topic List</a>
+    <a href="/update_topic/{{ topic.key.id }}" class="button-link">Edit</a>
+</div>
+{% endblock %}
+
+
+

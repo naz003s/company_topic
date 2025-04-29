@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Company Details{% endblock %}
+
+{% block content %}
+<h2>Company Details</h2>
+<p><strong>Ticker:</strong> {{ company["Ticker"] }}</p>
+<p><strong>Company Name:</strong> {{ company["Company_Name"] }}</p>
+<p><strong>Industry:</strong> {{ company["Industry"] }}</p>
+
+<div class="card-actions">
+    <a href="/" class="button-link">← Back to Company List</a>
+    <a href="/update_company/{{ company.key.name }}" class="button-link">Edit</a>
+</div>
+{% endblock %}
+
+
